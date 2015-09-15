@@ -14,7 +14,7 @@ values.sort(function (a, b) {
 
 window.onload = function () {
 
-    var map = Raphael("container", 1000, 900),
+    var map = Raphael("container", 940, 600),
         color = Raphael.rgb2hsb(0,102,255)
         attr = {
             "fill": "#d3d3d3",
@@ -25,6 +25,11 @@ window.onload = function () {
             "stroke-width": "0.75",
             "stroke-dasharray": "none"
         };
+
+    var zoom = .75;
+    map.setSize(map.width * zoom, map.height * zoom);
+    map.setViewBox(0, 0, map.width / zoom, map.height / zoom);
+    map.canvas.setAttribute('preserveAspectRatio', 'none');
 
     for (var i=0; i<values.length; i++) {
         var a = values.length - i,
